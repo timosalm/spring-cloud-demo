@@ -1,0 +1,1 @@
+spring.application.name: sc-product-service # for config server and service-registry

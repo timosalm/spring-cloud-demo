@@ -1,0 +1,16 @@
+---
+applications:
+  - name: sc-order-service
+    path: order-service/target/order-service-0.0.1-SNAPSHOT.jar
+    services:
+      - mysql
+      - service-registry
+      - config-server
+      - rabbit-mq
+      - cloud-cache
+    #routes:
+    #  - route: sc-order-service.apps.internal
+    buildpacks:
+      - java_buildpack
+    env:
+      JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ } }'
