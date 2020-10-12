@@ -14,3 +14,14 @@ applications:
       - java_buildpack
     env:
       JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ } }'
+  - name: sc-product-service
+    path: product-service/target/product-service-0.0.1-SNAPSHOT.jar
+    services:
+      - service-registry
+      - config-server
+    #routes:
+    #  - route: sc-product-service.apps.internal
+    buildpacks:
+      - java_buildpack
+    env:
+      JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ } }'
