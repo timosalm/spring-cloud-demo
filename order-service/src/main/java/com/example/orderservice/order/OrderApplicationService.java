@@ -8,9 +8,11 @@ import java.util.List;
 public class OrderApplicationService {
 
     private final OrderRepository orderRepository;
+    private final ProductService productService;
 
-    OrderApplicationService(OrderRepository orderRepository) {
+    OrderApplicationService(OrderRepository orderRepository, ProductService productService) {
         this.orderRepository = orderRepository;
+        this.productService = productService;
     }
 
     List<Order> fetchOrders() {
@@ -18,7 +20,10 @@ public class OrderApplicationService {
     }
 
     Order createOrder(CreateOrderData createOrderData) {
-        final Order order = Order.create();
+        final Order order = Order.create(createOrderData.getProductId());
+
+        final List<Product> products = productService.fetchProducts();
+        assert order.isValid(products);
         orderRepository.save(order);
         return order;
     }

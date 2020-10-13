@@ -1,20 +1,18 @@
 package com.example.orderservice.order;
 
-import java.util.UUID;
-
 public class CreateOrderData {
 
-    private UUID productId;
+    private int productId;
     private String shippingAddress;
 
     public CreateOrderData() {
     }
 
-    public UUID getProductId() {
+    public int getProductId() {
         return productId;
     }
 
-    public void setProductId(UUID productId) {
+    public void setProductId(int productId) {
         this.productId = productId;
     }
 }

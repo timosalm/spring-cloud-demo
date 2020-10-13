@@ -3,6 +3,7 @@ package com.example.orderservice.order;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -11,9 +12,18 @@ public class Order {
 
     @Id
     private UUID id = UUID.randomUUID();
+    private int productId;
 
-    public static Order create() {
-        return new Order();
+    private Order(int productId) {
+        this.productId = productId;
+    }
+
+    public static Order create(int productId) {
+        return new Order(productId);
+    }
+
+    public boolean isValid(List<Product> products) {
+        return products.stream().filter(product -> product.getId() == productId).count() == 1;
     }
 
     public UUID getId() {
@@ -22,5 +32,13 @@ public class Order {
 
     public void setId(UUID id) {
         this.id = id;
+    }
+
+    public int getProductId() {
+        return productId;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
 }
