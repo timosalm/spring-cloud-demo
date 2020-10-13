@@ -7,11 +7,13 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.gemfire.config.annotation.ClientCacheApplication;
-import org.springframework.geode.config.annotation.EnableClusterAware;
+import org.springframework.data.gemfire.config.annotation.EnableCachingDefinedRegions;
+import org.springframework.data.gemfire.config.annotation.EnableClusterConfiguration;
 import org.springframework.web.client.RestTemplate;
 
 @ClientCacheApplication(name = "OrderServiceApplication")
-@EnableClusterAware
+@EnableCachingDefinedRegions
+@EnableClusterConfiguration(useHttp = true)
 @EnableDiscoveryClient
 @SpringBootApplication
 public class OrderServiceApplication {
