@@ -10,8 +10,8 @@ import org.springframework.data.gemfire.config.annotation.ClientCacheApplication
 import org.springframework.geode.config.annotation.EnableClusterAware;
 import org.springframework.web.client.RestTemplate;
 
-//@ClientCacheApplication(name = "OrderServiceApplication")
-//@EnableClusterAware
+@ClientCacheApplication(name = "OrderServiceApplication")
+@EnableClusterAware
 @EnableDiscoveryClient
 @SpringBootApplication
 public class OrderServiceApplication {
