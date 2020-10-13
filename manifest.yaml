@@ -7,7 +7,7 @@ applications:
       - service-registry
       - config-server
       - rabbit-mq
-      - cloud-cache
+      #- cloud-cache
     #routes:
     #  - route: sc-order-service.apps.internal
     buildpacks:
@@ -21,6 +21,15 @@ applications:
       - config-server
     #routes:
     #  - route: sc-product-service.apps.internal
+    buildpacks:
+      - java_buildpack
+    env:
+      JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ } }'
+  - name: sc-gateway
+    path: gateway/target/gateway-0.0.1-SNAPSHOT.jar
+    services:
+      - service-registry
+      - config-server
     buildpacks:
       - java_buildpack
     env:

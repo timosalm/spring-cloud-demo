@@ -1,0 +1,3 @@
+spring.application.name: sc-gateway # for config server and service-registry # for config server and service-registry
+spring.cloud.gateway.discovery.locator.enabled: true
+spring.autoconfigure.exclude: org.springframework.cloud.netflix.eureka.EurekaClientAutoConfiguration
