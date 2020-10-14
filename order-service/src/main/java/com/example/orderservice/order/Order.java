@@ -3,16 +3,19 @@ package com.example.orderservice.order;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
 
 @Entity
 @Table(name = "`Order`") // Order is a reserved word
-public class Order {
+public class Order implements Serializable {
 
     @Id
     private UUID id = UUID.randomUUID();
     private int productId;
+
+    private Order() {}
 
     private Order(int productId) {
         this.productId = productId;

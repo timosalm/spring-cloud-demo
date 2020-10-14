@@ -19,7 +19,6 @@
         <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
         <spring-cloud-services.version>2.2.4.RELEASE</spring-cloud-services.version>
         <wavefront.version>2.0.1</wavefront.version>
-        <spring-data-gemfire.version>2.2.6.RELEASE</spring-data-gemfire.version> <!-- https://github.com/spring-projects/spring-data-gemfire/wiki/Spring-Data-for-Pivotal-GemFire-Version-Compatibility-Matrix -->
     </properties>
 
     <dependencies>
@@ -64,9 +63,8 @@
             <artifactId>spring-boot-starter-cache</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-gemfire</artifactId>
-            <version>${spring-data-gemfire.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
         <dependency>
             <groupId>com.wavefront</groupId>
@@ -80,6 +78,10 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-zipkin</artifactId>
         </dependency>-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>mysql</groupId>

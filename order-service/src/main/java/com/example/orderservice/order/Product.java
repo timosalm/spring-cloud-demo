@@ -2,19 +2,20 @@ package com.example.orderservice.order;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.io.Serializable;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-class Product {
+class Product implements Serializable {
     private int id;
 
-    public Product() {
+    Product() {
     }
 
-    public int getId() {
+    int getId() {
         return id;
     }
 
-    public void setId(int id) {
+    void setId(int id) {
         this.id = id;
     }
 }

@@ -7,11 +7,10 @@ applications:
       - service-registry
       - config-server
       - rabbit-mq
-      #- cloud-cache
+      - redis
+      - circuit-breaker-dashboard
     #routes:
     #  - route: sc-order-service.apps.internal
-    buildpacks:
-      - java_buildpack
     env:
       JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ } }'
   - name: sc-product-service
@@ -19,10 +18,9 @@ applications:
     services:
       - service-registry
       - config-server
+      - circuit-breaker-dashboard
     #routes:
     #  - route: sc-product-service.apps.internal
-    buildpacks:
-      - java_buildpack
     env:
       JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ } }'
   - name: sc-gateway
@@ -30,7 +28,5 @@ applications:
     services:
       - service-registry
       - config-server
-    buildpacks:
-      - java_buildpack
     env:
       JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ } }'

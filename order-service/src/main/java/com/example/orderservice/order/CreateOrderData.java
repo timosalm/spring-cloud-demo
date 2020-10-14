@@ -15,4 +15,12 @@ public class CreateOrderData {
     public void setProductId(int productId) {
         this.productId = productId;
     }
+
+    public String getShippingAddress() {
+        return shippingAddress;
+    }
+
+    public void setShippingAddress(String shippingAddress) {
+        this.shippingAddress = shippingAddress;
+    }
 }
