@@ -1,5 +1,6 @@
 package com.example.orderservice.order;
 
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -14,19 +15,30 @@ public class Order implements Serializable {
     @Id
     private UUID id = UUID.randomUUID();
     private int productId;
+    private OrderStatus orderStatus = OrderStatus.CREATED;
 
-    private Order() {}
+    private String shippingAddress;
 
-    private Order(int productId) {
+    private Order() {
+    }
+
+    private Order(int productId, String shippingAddress) {
         this.productId = productId;
+        this.shippingAddress = shippingAddress;
     }
 
-    public static Order create(int productId) {
-        return new Order(productId);
+    static Order create(int productId, String shippingAddress) {
+        return new Order(productId, shippingAddress);
     }
 
-    public boolean isValid(List<Product> products) {
+    boolean isValid(List<Product> products) {
         return products.stream().filter(product -> product.getId() == productId).count() == 1;
+    }
+
+    void updateStatus(OrderStatusUpdate statusUpdate) {
+        if (id.equals(statusUpdate.getId())) {
+            this.orderStatus = statusUpdate.getStatus();
+        }
     }
 
     public UUID getId() {
@@ -43,5 +55,21 @@ public class Order implements Serializable {
 
     public void setProductId(int productId) {
         this.productId = productId;
+    }
+
+    public String getShippingAddress() {
+        return shippingAddress;
+    }
+
+    public void setShippingAddress(String shippingAddress) {
+        this.shippingAddress = shippingAddress;
+    }
+
+    public OrderStatus getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(OrderStatus orderStatus) {
+        this.orderStatus = orderStatus;
     }
 }

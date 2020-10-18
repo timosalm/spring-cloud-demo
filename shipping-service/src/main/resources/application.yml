@@ -1,0 +1,6 @@
+spring:
+  application.name: sc-shipping-service # for config server and service-registry
+  cloud.stream:
+    bindings:
+      shipOrder-in-0.destination: order-shipping-exchange
+      shipOrder-out-0.destination: order-delivered-exchange

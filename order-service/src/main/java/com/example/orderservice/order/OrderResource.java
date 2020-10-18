@@ -3,6 +3,8 @@ package com.example.orderservice.order;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.net.URI;
 import java.util.List;
 
@@ -24,7 +26,7 @@ class OrderResource {
     }
 
     @PostMapping
-    public ResponseEntity<Order> createOrder(@RequestBody CreateOrderData createOrderData) {
+    public ResponseEntity<Order> createOrder(@NotNull @Valid @RequestBody CreateOrderData createOrderData) {
         final Order order = orderApplicationService.createOrder(createOrderData);
         final URI orderUri = URI.create(String.format("%s/%s", BASE_URI, order.getId()));
         return ResponseEntity.created(orderUri).body(order);

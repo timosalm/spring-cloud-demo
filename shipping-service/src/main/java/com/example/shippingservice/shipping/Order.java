@@ -1,18 +1,21 @@
-package com.example.orderservice.order;
+package com.example.shippingservice.shipping;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
+import java.util.UUID;
 
-public class CreateOrderData {
-
-    @Min(0)
-    @Max(Integer.MAX_VALUE)
+class Order {
+    private UUID id;
     private int productId;
-    @NotEmpty
     private String shippingAddress;
 
-    public CreateOrderData() {
+    public Order() {
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
     }
 
     public int getProductId() {

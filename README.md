@@ -1,6 +1,7 @@
 # spring-cloud-demo
 Demo for a typical Spring Cloud Architecture
 
+## Deployment on Cloud Foundry
 ```
 cf create-service p.mysql db-small mysql
 cf create-service p.service-registry standard service-registry
@@ -12,3 +13,20 @@ cf create-service p-circuit-breaker-dashboard standard circuit-breaker-dashboard
 ./mvnw clean package -DskipTests
 cf push
 ```
+
+## API usage  
+- Fetch products:
+	```
+	curl https://sc-gateway.YOUR_DOMAIN/SC-PRODUCT-SERVICE/api/v1/products
+	```
+- Fetch orders:
+	```
+	curl https://sc-gateway.YOUR_DOMAIN/SC-ORDER-SERVICE/api/v1/orders
+	```
+- Create order (After 10 seconds the status of the order should be DELIVERED)
+	```
+	curl --header "Content-Type: application/json" \
+	  --request POST \
+	  --data '{"productId":1,"shippingAddress":"Test address"}' \
+	  https://sc-gateway.YOUR_DOMAIN/SC-ORDER-SERVICE/api/v1/orders
+	```
