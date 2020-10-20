@@ -1,25 +1,27 @@
 package com.example.orderservice.order;
 
-
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.List;
-import java.util.UUID;
 
 @Entity
 @Table(name = "`Order`") // Order is a reserved word
 public class Order implements Serializable {
 
+    private static final long serialVersionUID = -1122620860862785845L;
+
     @Id
-    private UUID id = UUID.randomUUID();
+    @GeneratedValue
+    private Long id;
     private int productId;
     private OrderStatus orderStatus = OrderStatus.CREATED;
 
     private String shippingAddress;
 
-    private Order() {
+    public Order() {
     }
 
     private Order(int productId, String shippingAddress) {
@@ -41,11 +43,11 @@ public class Order implements Serializable {
         }
     }
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

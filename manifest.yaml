@@ -8,7 +8,6 @@ applications:
       - config-server
       - rabbit-mq
       - redis
-      - circuit-breaker-dashboard
     #routes:
     #  - route: sc-order-service.apps.internal
     env:

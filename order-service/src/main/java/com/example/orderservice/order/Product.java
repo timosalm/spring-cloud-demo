@@ -6,16 +6,19 @@ import java.io.Serializable;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 class Product implements Serializable {
-    private int id;
+
+    private static final long serialVersionUID = 2364007368011758242L;
+
+    private Long id;
 
     Product() {
     }
 
-    int getId() {
+    Long getId() {
         return id;
     }
 
-    void setId(int id) {
+    void setId(Long id) {
         this.id = id;
     }
 }

@@ -42,7 +42,6 @@ public class OrderApplicationService {
     }
 
     private void updateOrderStatus(OrderStatusUpdate statusUpdate) {
-        orderRepository.flush();
         final Optional<Order> order = orderRepository.findById(statusUpdate.getId());
         order.ifPresent(it -> {
             log.info("Status update with id: " + statusUpdate.getId() + " and status " + statusUpdate.getStatus());

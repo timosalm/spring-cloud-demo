@@ -4,26 +4,26 @@ import java.util.UUID;
 
 class OrderStatusUpdate {
 
-    private UUID id;
+    private Long id;
     private OrderStatus status;
 
     private OrderStatusUpdate() {
     }
 
-    private OrderStatusUpdate(UUID id, OrderStatus status) {
+    private OrderStatusUpdate(Long id, OrderStatus status) {
         this.id = id;
         this.status = status;
     }
 
-    static OrderStatusUpdate forDelivered(UUID id) {
+    static OrderStatusUpdate forDelivered(Long id) {
         return new OrderStatusUpdate(id, OrderStatus.DELIVERED);
     }
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

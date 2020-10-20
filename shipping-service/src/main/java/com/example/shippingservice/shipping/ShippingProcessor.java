@@ -16,7 +16,7 @@ public class ShippingProcessor {
     @Bean
     public Function<Order, OrderStatusUpdate> shipOrder() {
         return order -> {
-            log.info("shipOrder called for order id: " + order.getId().toString());
+            log.info("shipOrder called for order id: " + order.getId());
             try {
                 Thread.sleep(10000);
             } catch (InterruptedException e) {

@@ -2,23 +2,23 @@ package com.example.productservice.product;
 
 public class Product {
 
-    private int id;
+    private Long id;
     private String name;
 
-    private Product(int id, String name) {
+    private Product(Long id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public static Product create(int id, String name) {
+    public static Product create(Long id, String name) {
         return new Product(id, name);
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

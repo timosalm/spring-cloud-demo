@@ -1,20 +1,19 @@
 package com.example.shippingservice.shipping;
 
-import java.util.UUID;
 
 class Order {
-    private UUID id;
+    private Long id;
     private int productId;
     private String shippingAddress;
 
     public Order() {
     }
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
