@@ -1,5 +1,6 @@
-# spring-cloud-demo
-Demo for a typical Spring Cloud Architecture
+# Demo for a typical Spring Cloud Architecture
+
+![](architecture.png)
 
 ## Deployment on Cloud Foundry
 ```
@@ -24,8 +25,7 @@ cf push
 	```
 - Create order (After 10 seconds the status of the order should be DELIVERED)
 	```
-	curl --header "Content-Type: application/json" \
-	  --request POST \
+	curl --header "Content-Type: application/json" --request POST \
 	  --data '{"productId":1,"shippingAddress":"Test address"}' \
 	  https://sc-gateway.YOUR_DOMAIN/SC-ORDER-SERVICE/api/v1/orders
 	```
