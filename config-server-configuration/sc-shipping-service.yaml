@@ -1,0 +1,6 @@
+#management.metrics.export.wavefront.api-token=
+#management.metrics.export.wavefront.uri=
+spring.cloud.stream.bindings:
+  shipOrder-in-0.destination: order-shipping-exchange
+  shipOrder-out-0.destination: order-delivered-exchange
+shipping.duration: 10000

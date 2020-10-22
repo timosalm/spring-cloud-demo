@@ -33,9 +33,10 @@ public class OrderApplicationService {
         final Order order = Order.create(createOrderData.getProductId(), createOrderData.getShippingAddress());
 
         final List<Product> products = productService.fetchProducts();
-        assert order.isValid(products);
+        order.validate(products);
         orderRepository.save(order);
 
+        log.info("Created order: " + order);
         shippingService.shipOrder(order);
 
         return order;

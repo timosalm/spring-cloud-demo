@@ -14,7 +14,7 @@ public class ProductApplicationService {
 
     List<Product> fetchProducts() {
         return productNames.stream()
-                .map(name -> Product.create(Long.valueOf(productNames.indexOf(name) + 1), name))
+                .map(name -> Product.create((long) (productNames.indexOf(name) + 1), name))
                 .collect(Collectors.toList());
     }
 }

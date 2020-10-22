@@ -2,3 +2,7 @@ spring:
   jpa.hibernate.ddl-auto: update
   application.name: sc-order-service # for config server and service-registry
   cloud.loadbalancer.ribbon.enabled: false
+order:
+  exchange-name:
+  shipping-exchange-name:
+  products-api-url:

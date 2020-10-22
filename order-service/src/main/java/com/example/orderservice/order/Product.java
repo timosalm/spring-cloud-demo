@@ -21,4 +21,9 @@ class Product implements Serializable { // Serializable required for Redis cache
     void setId(Long id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "Product{id=" + id + '}';
+    }
 }

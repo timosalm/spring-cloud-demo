@@ -1,1 +1,3 @@
+#management.metrics.export.wavefront.api-token:
+#management.metrics.export.wavefront.uri:
 product-service.product-names: Tanzu Application Service, Tanzu Build Service, Azure Spring Cloud

@@ -1,2 +1,2 @@
 spring.application.name: sc-product-service # for config server and service-registry
-product-service.product-names: Product1, Product2
+product-service.product-names:

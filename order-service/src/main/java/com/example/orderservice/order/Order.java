@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.ValidationException;
 import java.io.Serializable;
 import java.util.List;
 
@@ -16,25 +17,27 @@ public class Order implements Serializable { // Serializable required for Redis 
     @Id
     @GeneratedValue
     private Long id;
-    private int productId;
+    private Long productId;
     private OrderStatus orderStatus = OrderStatus.CREATED;
 
     private String shippingAddress;
 
-    public Order() {
+    private Order() {
     }
 
-    private Order(int productId, String shippingAddress) {
+    private Order(Long productId, String shippingAddress) {
         this.productId = productId;
         this.shippingAddress = shippingAddress;
     }
 
-    static Order create(int productId, String shippingAddress) {
+    static Order create(Long productId, String shippingAddress) {
         return new Order(productId, shippingAddress);
     }
 
-    boolean isValid(List<Product> products) {
-        return products.stream().filter(product -> product.getId() == productId).count() == 1;
+    void validate(List<Product> products) {
+        if (products.stream().noneMatch(product -> product.getId().equals(productId))) {
+            throw new ValidationException("Unknown product with id: " + productId);
+        }
     }
 
     void updateStatus(OrderStatusUpdate statusUpdate) {
@@ -51,11 +54,11 @@ public class Order implements Serializable { // Serializable required for Redis 
         this.id = id;
     }
 
-    public int getProductId() {
+    public Long getProductId() {
         return productId;
     }
 
-    public void setProductId(int productId) {
+    public void setProductId(Long productId) {
         this.productId = productId;
     }
 
@@ -73,5 +76,11 @@ public class Order implements Serializable { // Serializable required for Redis 
 
     public void setOrderStatus(OrderStatus orderStatus) {
         this.orderStatus = orderStatus;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{id=" + id + ", productId=" + productId + ", orderStatus=" + orderStatus + ", shippingAddress='" +
+                shippingAddress + '\'' + '}';
     }
 }

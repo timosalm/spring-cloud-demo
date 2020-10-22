@@ -1,0 +1,6 @@
+#management.metrics.export.wavefront.api-token:
+#management.metrics.export.wavefront.uri:
+order:
+  exchange-name: order-delivered-exchange
+  shipping-exchange-name: order-shipping-exchange
+  products-api-ur: http://sc-product-service/api/v1/products

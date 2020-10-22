@@ -1,11 +1,13 @@
 package com.example.orderservice.order;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.core.TopicExchange;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +17,12 @@ import java.util.function.Consumer;
 public class ShippingService {
 
     private static final String ORDER_QUEUE_INPUT_NAME = "order-in-queue";
-    private static final String ORDER_EXCHANGE_NAME = "order-delivered-exchange";
-    private static final String ORDER_SHIPPING_EXCHANGE_NAME = "order-shipping-exchange";
+
+    @Value("${order.exchange-name}")
+    private String orderExchangeName;
+
+    @Value("${order.shipping-exchange-name}")
+    private String orderShippingExchangeName;
 
     private final RabbitTemplate rabbitTemplate;
     private Consumer<OrderStatusUpdate> orderStatusUpdateConsumer;
@@ -32,7 +38,10 @@ public class ShippingService {
 
     @Bean
     TopicExchange exchange() {
-        return new TopicExchange(ORDER_EXCHANGE_NAME);
+        if (StringUtils.isEmpty(orderExchangeName)) {
+            throw new RuntimeException("order.exchange-name not set");
+        }
+        return new TopicExchange(orderExchangeName);
     }
 
     @Bean
@@ -41,7 +50,10 @@ public class ShippingService {
     }
 
     void shipOrder(Order order) {
-        rabbitTemplate.convertAndSend(ORDER_SHIPPING_EXCHANGE_NAME, "#", order);
+        if (StringUtils.isEmpty(orderShippingExchangeName)) {
+            throw new RuntimeException("order.shipping-exchange-name not set");
+        }
+        rabbitTemplate.convertAndSend(orderShippingExchangeName, "#", order);
     }
 
     @RabbitListener(queues = ORDER_QUEUE_INPUT_NAME)

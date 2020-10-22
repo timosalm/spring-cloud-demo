@@ -8,18 +8,18 @@ public class CreateOrderData {
 
     @Min(0)
     @Max(Integer.MAX_VALUE)
-    private int productId;
+    private Long productId;
     @NotEmpty
     private String shippingAddress;
 
     public CreateOrderData() {
     }
 
-    public int getProductId() {
+    public Long getProductId() {
         return productId;
     }
 
-    public void setProductId(int productId) {
+    public void setProductId(Long productId) {
         this.productId = productId;
     }
 

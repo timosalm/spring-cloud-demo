@@ -1,7 +1,5 @@
 package com.example.orderservice.order;
 
-import java.util.UUID;
-
 class OrderStatusUpdate {
 
     private Long id;
