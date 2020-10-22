@@ -1,0 +1,42 @@
+---
+applications:
+  - name: sc-order-service
+    path: order-service/target/order-service-0.0.1-SNAPSHOT.jar
+    services:
+      - mysql
+      - service-registry
+      - config-server
+      - name: gateway
+        parameters:
+          routes: [{"path": "/SC-ORDER-SERVICE/**"}]
+      - rabbit-mq
+      - redis
+    #routes:
+    #  - route: sc-order-service.apps.internal
+    env:
+      JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ } }'
+  - name: sc-product-service
+    path: product-service/target/product-service-0.0.1-SNAPSHOT.jar
+    services:
+      - service-registry
+      - config-server
+      - name: gateway
+        parameters:
+          routes: [{"path": "/SC-PRODUCT-SERVICE/**"}]
+    #routes:
+    #  - route: sc-product-service.apps.internal
+    env:
+      JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ } }'
+  - name: sc-shipping-service
+    path: shipping-service/target/shipping-service-0.0.1-SNAPSHOT.jar
+    services:
+      - service-registry
+      - config-server
+      - name: gateway
+        parameters:
+          routes: [{"path": "/SC-SHIPPING-SERVICE/**"}]
+      - rabbit-mq
+    #routes:
+    #  - route: sc-shipping-service.apps.internal
+    env:
+      JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ } }'

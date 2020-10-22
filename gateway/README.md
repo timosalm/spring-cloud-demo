@@ -6,6 +6,8 @@
      ```
      curl https://spring-cloud-broker.YOUR_APPS_DOMAIN/actuator/info
      ```
+  
+  Tested with SCS tile version **2.1.5-build.6**!
 - CSRF has to be disabled, see implementation [here](src/main/java/com/example/gateway/WebSecurityConfiguration.java)
 - It's necessary to exclude the `EurekaInstanceAutoConfiguration.class`, 
   see [GatewayApplication class](src/main/java/com/example/gateway/GatewayApplication.java)
