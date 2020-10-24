@@ -12,7 +12,7 @@ cf create-service p.gateway standard gateway -c '{"host": "sc-gateway"}'
 cf create-service p-rabbitmq standard rabbit-mq
 cf create-service p-redis shared-vm redis
 
-./mvnw clean package -DskipTests
+./mvnw clean package
 cf push -f manifest-without-gateway-app.yaml
 ```
 
@@ -24,7 +24,7 @@ cf create-service p.config-server standard config-server -c '{"git": { "uri": "h
 cf create-service p-rabbitmq standard rabbit-mq
 cf create-service p-redis shared-vm redis
 
-./mvnw clean package -DskipTests
+./mvnw clean package
 cf push
 
 cf add-network-policy sc-gateway sc-order-service --protocol tcp --port 8080
