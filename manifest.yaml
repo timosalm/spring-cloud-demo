@@ -8,8 +8,8 @@ applications:
       - config-server
       - rabbit-mq
       - redis
-    #routes:
-    #  - route: sc-order-service.apps.internal
+    routes:
+      - route: sc-order-service.apps.internal
     env:
       JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ } }'
   - name: sc-product-service
@@ -17,8 +17,8 @@ applications:
     services:
       - service-registry
       - config-server
-    #routes:
-    #  - route: sc-product-service.apps.internal
+    routes:
+     - route: sc-product-service.apps.internal
     env:
       JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ } }'
   - name: sc-shipping-service
@@ -27,8 +27,8 @@ applications:
       - service-registry
       - config-server
       - rabbit-mq
-    #routes:
-    #  - route: sc-shipping-service.apps.internal
+    routes:
+      - route: sc-shipping-service.apps.internal
     env:
       JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ } }'
   - name: sc-gateway

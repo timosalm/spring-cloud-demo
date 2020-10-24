@@ -1,2 +1,5 @@
 spring.application.name: sc-product-service # for config server and service-registry
 product-service.product-names:
+eureka.instance:
+    non-secure-port: 8080
+    secure-port-enabled: false

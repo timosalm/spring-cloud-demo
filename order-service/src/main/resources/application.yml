@@ -2,6 +2,9 @@ spring:
   jpa.hibernate.ddl-auto: update
   application.name: sc-order-service # for config server and service-registry
   cloud.loadbalancer.ribbon.enabled: false
+eureka.instance:
+  non-secure-port: 8080
+  secure-port-enabled: false
 order:
   exchange-name:
   shipping-exchange-name:

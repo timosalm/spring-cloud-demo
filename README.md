@@ -26,6 +26,10 @@ cf create-service p-redis shared-vm redis
 
 ./mvnw clean package -DskipTests
 cf push
+
+cf add-network-policy sc-gateway sc-order-service --protocol tcp --port 8080
+cf add-network-policy sc-order-service sc-product-service --protocol tcp --port 8080
+cf add-network-policy sc-gateway sc-product-service --protocol tcp --port 8080
 ```
 
 See information [here](gateway/README.md) if the gateway deployment doesn't work!
