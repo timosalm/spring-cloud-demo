@@ -3,4 +3,4 @@
 order:
   exchange-name: order-delivered-exchange
   shipping-exchange-name: order-shipping-exchange
-  products-api-ur: http://sc-product-service/api/v1/products
+  products-api-url: http://sc-product-service/api/v1/products
