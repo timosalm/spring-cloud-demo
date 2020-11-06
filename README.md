@@ -16,6 +16,8 @@ cf create-service p-redis shared-vm redis
 
 ./mvnw clean package
 cf push -f manifest-without-gateway-app.yaml
+
+cf add-network-policy sc-order-service sc-product-service --protocol tcp --port 8080
 ```
 
 ## Deployment with Spring Cloud Service Broker using your own Spring Cloud Gateway application
