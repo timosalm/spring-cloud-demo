@@ -1,5 +1,7 @@
 # Demo for a typical Spring Cloud Architecture on TAS/PCF/CF
 
+**See repository [here](https://github.com/tsalm-pivotal/spring-cloud-demo-asc) for the same application deployed on Azure Spring Cloud**
+
 ![](architecture.png)
 
 ## Deployment with Spring Cloud Service Broker
@@ -14,6 +16,8 @@ cf create-service p-redis shared-vm redis
 
 ./mvnw clean package
 cf push -f manifest-without-gateway-app.yaml
+
+cf add-network-policy sc-order-service sc-product-service --protocol tcp --port 8080
 ```
 
 ## Deployment with Spring Cloud Service Broker using your own Spring Cloud Gateway application
