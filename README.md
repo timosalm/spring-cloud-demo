@@ -5,7 +5,6 @@
 ![](architecture.png)
 
 ## Deployment with Spring Cloud Service Broker
-
 ```
 cf create-service p.mysql db-small mysql
 cf create-service p.service-registry standard service-registry
@@ -19,6 +18,7 @@ cf push -f manifest-without-gateway-app.yaml
 
 cf add-network-policy sc-order-service sc-product-service --protocol tcp --port 8080
 ```
+Hint: To be able to set parameters for the services in the CF manifest file see [manifest-without-gateway-app.yaml](manifest-without-gateway-app.yaml), CF CLI version > 7 is required!
 
 ## Deployment with Spring Cloud Service Broker using your own Spring Cloud Gateway application
 ```
