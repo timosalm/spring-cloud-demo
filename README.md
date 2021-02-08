@@ -2,6 +2,8 @@
 
 **See repository [here](https://github.com/tsalm-pivotal/spring-cloud-demo-asc) for the same application deployed on Azure Spring Cloud**
 
+**See repository [here](https://github.com/tsalm-pivotal/spring-cloud-demo-k8s) for the same application deployed on Kubernetes**
+
 ![](architecture.png)
 
 ## Deployment with Spring Cloud Service Broker
