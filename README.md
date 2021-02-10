@@ -7,6 +7,7 @@
 ![](architecture.png)
 
 ## Deployment with Spring Cloud Service Broker
+
 ```
 cf create-service p.mysql db-small mysql
 cf create-service p.service-registry standard service-registry
@@ -55,4 +56,15 @@ See information [here](gateway/README.md) if the gateway deployment doesn't work
 	  --data '{"productId":1,"shippingAddress":"Test address"}' \
 	  https://sc-gateway.YOUR_DOMAIN/SC-ORDER-SERVICE/api/v1/orders
 	```
- 
+## Update externalized application configuration demo
+To demonstrate the update of the externalized application configuration you have to create an new repository with the contents of the [config-server-configuration](config-server-configuration) directory and configure it for the config-server instance. Example for a private configuration repository:
+```
+cf create-service p.config-server standard config-server -c '{"git": { "uri": "https://github.com/tsalm-pivotal/spring-cloud-demo-config-server-configuration", "username": "<your-user-name>", "password": "<your-personal-access-token>"} }'
+```
+To demonstrate the functionality, fetch the products, change the product names in sc-product-service.yaml in your configuration repository, and then update the configuration server, restart the product service and fetch the products again:
+``` 
+curl https://sc-gateway.YOUR_DOMAIN/SC-PRODUCT-SERVICE/api/v1/products
+cf update-service config-server -c '{"update-git-repos": true }'
+cf restart sc-product-service
+curl https://sc-gateway.YOUR_DOMAIN/SC-PRODUCT-SERVICE/api/v1/products
+```
